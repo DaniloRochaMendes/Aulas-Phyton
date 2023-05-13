@@ -1,0 +1,6 @@
+nome=input("Digite o nome: ")
+idade=int (input("Digite sua idade: "))
+if idade>=64:
+    print(("O paciente " + nome + " Possui prioridade!"))
+else:
+    print("o paciente " + nome + " terá atendimento normal!")
