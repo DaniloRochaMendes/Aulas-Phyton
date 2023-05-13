@@ -1,0 +1,7 @@
+nome=input("Qual o seu nome funcionario? ")
+empresa=input("digite a empresa: ")
+qtde_funcionarios=int (input("Com quantos funcionarios você trabalha?: "))
+mediaSalarial=float(input("digite seu salario: "))
+print(nome + " trabalha na empresa " + empresa)
+print("Trabalha junto à", qtde_funcionarios, "funcionarios.")
+print("A média salarial é de " + str(mediaSalarial) + " R$")
