@@ -1,0 +1,9 @@
+nome=input("Digite seu nome: ")
+idade=int (input("Digite sua idade: "))
+doenca=input("Suspeita de doença grave? (responda com Y/N)"). upper()
+if idade>65:
+    print("O paciente " + nome + " possui prioridade")
+elif doenca=="Y":
+    print("O paciente " +nome + " vai ser encaminhado ao suporte.")
+else:
+    print("O paciente " + nome + " necessita aguardar o suporte.")
