@@ -1,0 +1,11 @@
+def perguntar():
+    return input("O que deseja realizar?\n" +
+               "<I> - Inserir usuario\n" +
+               "<P> - Pesquisar usuario\n" +
+               "<E> - Excluir usuario\n" +
+               "<L> Listar usuario\n")
+
+def inserir (dicionario):
+    dicionario[input("Digite o login: ").upper()] = [input("Digite o nome: ").upper(),
+                                                   input("Digite a ultima data de acesso: "),
+                                                   input("Qual a última estação acessada: ").upper()]
