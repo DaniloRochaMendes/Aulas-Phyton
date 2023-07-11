@@ -1,0 +1,17 @@
+usuarios = {}
+opção = input ("O que deseja realizar?\n" +
+               "<I> - Inserir usuario\n" +
+               "<P> - Pesquisar usuario\n" +
+               "<E> - Excluir usuario\n" +
+               "<L> Listar usuario\n").upper()
+while opção=="I" or opção=="p" or opção=="E" or opção=="L":
+    if opção=="I":
+        chave=input("Digite seu login: ").upper()
+        nome=input("Digite o nome: ").upper()
+        data=input("Digite a ultima data de acesso: ")
+        estação=input("Qual a última estação acessada: ").upper()
+    opção = input("O que deseja realizar?\n" +
+        "<I> - Inserir usuario\n" +
+               "<P> - Pesquisar usuario\n" +
+               "<E> - Excluir usuario\n" +
+               "<L> Listar usuario\n").upper()
