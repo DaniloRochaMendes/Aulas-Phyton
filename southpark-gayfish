@@ -1,0 +1,14 @@
+SIM = "SIM"
+peixegay = "ENTÃO VOCÊ É UM PEIXE GAY!!"
+naogay = "Não é gay"
+
+print("========================================")
+input("Você gosta de palito de peixe? "). upper()
+print("========================================")
+if SIM:
+    gostar=input("Você gosta de por PAU de peixe na boca??? ") .upper()
+    print("========================================")
+    if (gostar == SIM):
+            print(peixegay)
+    else: print(naogay)
+else: print(naogay)
