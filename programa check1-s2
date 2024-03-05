@@ -1,0 +1,64 @@
+import subprocess
+import argparse
+
+#import de programas
+
+def zona_nova(dominio): #definindo zona de dominio
+    find_conf="/etc/bind/named.conf.default-zones"
+    with open(find_conf,"a") as alterar:
+        alterar.write(f"zone \"{dominio}\" {{ \n"
+                      f"type master; \n"
+                      f"file '/etc/bind/db.{dominio}';\n"
+                      f"}};\n")
+    find_db=f"/etc/bind/db.{dominio}"
+    with open(find_db, "w") as alterar_db: #realizando acesso dentro da /etc/bind
+        alterar_db.write(f";\n" #alteração dentro da db.adminlinux
+                         f"; BIND data file for local loopback interface\n"
+                         f";\n"
+                         f"$TTL    604800\n"
+                         f"@       IN      SOA     {dominio}.  root.{dominio}. (\n"
+                         f"                              2         ; Serial\n"
+                         f"                         604800         ; Refresh\n"
+                         f"                          86400         ; Retry\n"
+                         f"                        2419200         ; Expire\n"
+                         f"                         604800 )       ; Negative Cache TTL\n"
+                         f";\n"
+                         f"@       IN      NS      RM553722.{dominio}.\n"
+                         f"RM553722 IN     A       172.176.209.237\n"
+                         f"www      IN     A       172.176.209.237\n"
+                         f"ftp     IN      CNAME   www.{dominio}.\n"
+                         f"smtp    IN      CNAME   www{dominio}.\n"
+                         f"imap    IN      A       157.69.243.166")
+
+def conf_revers(reverso,dominio): #definindo zona de reverse
+    find_reverse=f"/etc/bind/named.conf.default-zones" #realizando acesso dentro da /etc/bind para reverse
+    with open(find_reverse, "w") as alterar_reverse:
+        alterar_reverse.write(f'zone "{reverso}.in-addr.arpa"{{ \n'
+                              f'type master; \n'
+                              f'type file "/etc/bind/db.{reverso}; \n'
+                              f'}};\n')
+    find_reverse=f'/etc/bind/db.{reverso}'
+    with open(find_reverse, 'w') as alterar_reverse: #alteração dentro da db.209 (Reverse)
+        alterar_reverse.write(f';\n'
+                              f'; BIND data file for local loopback interface \n'
+                              f';\n'
+                              f'$TTL    604800\n'
+                              f'@       IN      SOA     {dominio}.  {dominio}. (\n'
+                              f'                              2         ; Serial\n'
+                              f'                         604800         ; Refresh\n'
+                              f'                          86400         ; Retry\n'
+                              f'                        2419200         ; Expire\n'
+                              f'                         604800 )       ; Negative Cache TTL\n'
+                              f';\n'
+                              f'@       IN      NS      RM553722.{dominio}.\n'
+                              f'237     IN      PTR     RM553722.{dominio}.\n'
+                              f'237     IN      PTR     www.{dominio}.\n'
+                              f'237     IN      PTR     smtp.{dominio}.\n'
+                              f'237     IN      PTR     ftp.{dominio}.\n'
+                              f'\n'
+                              f'\n'
+                              f'RM553722 IN     A       172.176.209.237\n'
+                              f'www      IN     A       172.176.209.237\n'
+                              f'ftp     IN      CNAME   www.{dominio}.\n'
+                              f'smtp    IN      CNAME   www.{dominio}.\n'
+                              f'imap    IN      A       172.69.69.157\n')
