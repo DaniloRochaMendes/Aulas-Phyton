@@ -1,0 +1,10 @@
+import csv
+import subprocess
+
+
+def teste_vcs():
+    with open('teste.csv'):
+        find='C:\Users\40417481\OneDrive - Telefonica\Área de Trabalho'
+        with open(teste.vcs) as alterar:
+            alterar.write(teste_vcs)
+            
